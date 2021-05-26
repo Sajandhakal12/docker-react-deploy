@@ -1,4 +1,7 @@
+language: generic
+
 sudo: required
+
 services:
   - docker
 
@@ -6,4 +9,4 @@ before_install:
   - docker build -t devileyes/docker-react-deploy -f Dockerfile.dev .
 
 script:
-  - docker run devileyes/docker-react-deploy npm run test -- --coverage
+  - docker run -e CI=true devileyes/docker-react-deploy npm run test -- --coverage
